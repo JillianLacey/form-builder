@@ -38,6 +38,10 @@ let formData = [
     "icon": "",
     "options": [
       {
+        "label": "Select Language",
+        "value": "SL"
+      },
+      {
         "label": "English",
         "value": "EN"
       },
@@ -101,6 +105,13 @@ let formData = [
 // -------- Your Code Goes Below this Line --------
 
 //this is the parent element for where the items created will be appended
+
+// let fontAwesome = document.createElement("head");
+let fontAwesome = document.querySelector("head");
+let link = document.createElement("link");
+link.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+fontAwesome.appendChild(link);
+
 let fields = document.querySelector("#fields");
 
 
@@ -138,6 +149,7 @@ for (let i = 0; i < formData.length; i++) {
     select.setAttribute('placeholder', formData[i].label);
     select.setAttribute('id', formData[i].id);
     select.setAttribute('class', formData[i].icon);
+    select.style.width = 50;
 
     for (j = 0; j < formData[i].options.length; j++) {
       let options = document.createElement("option");
@@ -145,6 +157,7 @@ for (let i = 0; i < formData.length; i++) {
       options.textContent = formData[i].options[j].label;
       select.appendChild(options);
     }
+
 
     fields.appendChild(select);
   }
@@ -155,10 +168,9 @@ for (let i = 0; i < formData.length; i++) {
     textarea.setAttribute('placeholder', formData[i].label);
     textarea.setAttribute('id', formData[i].id);
     textarea.setAttribute('class', formData[i].icon);
-    textarea.setAttribute('cols', 30);
-    textarea.setAttribute('rows', 10);
-
-
+    // textarea.setAttribute('cols', 30);
+    // textarea.setAttribute('rows', 10);
+    textarea.style = "padding: 7px";
 
     fields.appendChild(textarea);
   }
